@@ -1,35 +1,27 @@
 
-
 import PropTypes from 'prop-types'
 
 import React from 'react'
-
+import '../App.css';
 
 function Header(props) {
-    const myStyle = {
-        textAlign: 'text-center', 
-        fontWeight: 'bold',
-        fontSize: 18,
-        marginTop: 0,
-        width: 200,
-       
-      };
+
   return (
-  
 
-        
-<nav  className="navbar navbar-dark bg-info">
-  <a style={myStyle} className="navbar-brand text-center" >{props.title}</a>
 
-</nav>
- 
+
+    <nav className="navbar navbar-dark bg-secondary">
+      <a className="navbar-brand text-center header" >{props.title}</a>
+
+    </nav>
+
   )
 }
 Header.defaultProps = {
-  title : "Your Title here",
-  searchBar : true
+  title: "Your Title here",
+  searchBar: true
 }
-Header.propTypes ={
+Header.propTypes = {
   title: PropTypes.string,
   searchBar: PropTypes.bool.isRequired
 }

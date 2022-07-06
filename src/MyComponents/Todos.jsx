@@ -3,12 +3,13 @@ import TodoItem from "./TodoItem";
 import { todo } from '../../src/index'
 import { v4 as uuidv4 } from 'uuid';
 
+
 const regexPattern = new RegExp(/^([A-Za-z]|[0-9]|_)+$/)
 const innerPageStyle = {
   marginTop: 30,
 };
 
-export function todosAcation(state = [], action) {
+export function todosAction(state = [], action) {
 
   switch (action.type) {
     case 'ADD_TODO':
@@ -79,10 +80,10 @@ function Todos(props) {
 
     e.preventDefault();
     if (!title) {
-      alert("Backlog can't be blank");
+      alert("Backlog name can't be blank!");
     }
     else if (!regexPattern.test(title)) {
-      alert("Not Matched")
+      alert("Validation Failed!")
       setTitle("");
 
     }
@@ -123,7 +124,7 @@ function Todos(props) {
       <div className="container my-9 ">
         <h4 style={innerPageStyle}>Add New Backlog </h4>
         <form onSubmit={submit}>
-          <div className="mb-3">
+          <div className="mb-3 row">
             <input
               type="text"
               placeholder='Please Add Backlog…'
@@ -131,35 +132,37 @@ function Todos(props) {
               onChange={(e) =>
                 setTitle(e.target.value)
               }
-              className="form-control"
+              className="input-css col-sm-10 "
               id="title"
               aria-describedby="emailHelp"
             />
-          </div>
-          <button type="submit" className="btn btn-sm btn-primary">
+            <button type="submit" className="col-sm-2 btn btn-sm btn-primary">
             Add Backlog
           </button>
+          </div>
+          
         </form>
       </div>
-      <div className="container my-3" style={myStyle}>
+      <div className="container my-3 card-border" style={myStyle}>
         <h3 className="my-3">Backlog List</h3>
-        <div className="row">
+        <div className="row ">
           <div className="col-sm-3">
+          <div class="col-sm-12 card card-h-100">
             <h3>Backlog</h3>
             {backlogList.map((item) => {
-              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAcation(todosListContext, {
+              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAction(todosListContext, {
                 cid: item.cid,
                 id: 1,
                 type: 'REMOVE_TODO'
               }))} moveLeftTodoAction={
-                () => settodosListContext(todosAcation(todosListContext, {
+                () => settodosListContext(todosAction(todosListContext, {
                   item,
                   id: 1,
                   type: 'MOVE_LEFT_TODO'
                 }))}
 
                 moveRightAction={
-                  () => settodosListContext(todosAcation(todosListContext, {
+                  () => settodosListContext(todosAction(todosListContext, {
                     item,
                     id: 1,
                     type: 'MOVE_RIGHT_TODO'
@@ -167,71 +170,78 @@ function Todos(props) {
               />
             })}
           </div>
+          </div>
           <div className="col-sm-3">
+          <div class="col-sm-12 card card-h-100">
             <h3>Todo</h3>
             {todosList.map((item) => {
-              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAcation(todosListContext, {
+              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAction(todosListContext, {
                 cid: item.cid,
                 id: 2,
                 type: 'REMOVE_TODO'
               }))} moveLeftTodoAction={
-                () => settodosListContext(todosAcation(todosListContext, {
+                () => settodosListContext(todosAction(todosListContext, {
                   item,
                   id: 2,
                   type: 'MOVE_LEFT_TODO'
                 }))}
 
                 moveRightAction={
-                  () => settodosListContext(todosAcation(todosListContext, {
+                  () => settodosListContext(todosAction(todosListContext, {
                     item,
                     id: 2,
                     type: 'MOVE_RIGHT_TODO'
                   }))} />
             })}
+            </div>
           </div>
           <div className="col-sm-3">
+          <div class="col-sm-12 card card-h-100">
             <h3>In-Progress</h3>
             {inProgressList.map((item) => {
-              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAcation(todosListContext, {
+              return <TodoItem {...item}  key={item.cid} removeTodoAction={() => settodosListContext(todosAction(todosListContext, {
                 cid: item.cid,
                 id: 3,
                 type: 'REMOVE_TODO'
               }))} moveLeftTodoAction={
-                () => settodosListContext(todosAcation(todosListContext, {
+                () => settodosListContext(todosAction(todosListContext, {
                   item,
                   id: 3,
                   type: 'MOVE_LEFT_TODO'
                 }))}
 
                 moveRightAction={
-                  () => settodosListContext(todosAcation(todosListContext, {
+                  () => settodosListContext(todosAction(todosListContext, {
                     item,
                     id: 3,
                     type: 'MOVE_RIGHT_TODO'
                   }))} />
             })}
+            </div>
           </div>
           <div className="col-sm-3">
+          <div class="col-sm-12 card card-h-100">
             <h3>Done</h3>
             {doneList.map((item) => {
-              return <TodoItem {...item} key={item.cid} removeTodoAction={() => settodosListContext(todosAcation(todosListContext, {
+              return <TodoItem {...item} key={item.cid} removeTodoAction={() => settodosListContext(todosAction(todosListContext, {
                 cid: item.cid,
                 id: 4,
                 type: 'REMOVE_TODO'
               }))} moveLeftTodoAction={
-                () => settodosListContext(todosAcation(todosListContext, {
+                () => settodosListContext(todosAction(todosListContext, {
                   item,
                   id: 4,
                   type: 'MOVE_LEFT_TODO'
                 }))}
 
                 moveRightAction={
-                  () => settodosListContext(todosAcation(todosListContext, {
+                  () => settodosListContext(todosAction(todosListContext, {
                     item,
                     id: 4,
                     type: 'MOVE_RIGHT_TODO'
                   }))} />
             })}
+            </div>
           </div>
         </div>
       </div>
