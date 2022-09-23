@@ -1,5 +1,6 @@
 import React from 'react'
 
+/* footer component */ 
  const Footer = () => {
   return (
     <footer className='bg-secondary text-light py-3' >
